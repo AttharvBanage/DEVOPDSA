@@ -5,14 +5,14 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t farmer-app .'
+                bat 'docker build -t farmer-app .'
             }
         }
 
         stage('Run Container') {
             steps {
-                sh 'docker rm -f farmer-jenkins || true'
-                sh 'docker run -d -p 8096:80 --name farmer-jenkins farmer-app'
+                bat 'docker rm -f farmer-jenkins || echo done'
+                bat 'docker run -d -p 8096:80 --name farmer-jenkins farmer-app'
             }
         }
     }
