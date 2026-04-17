@@ -3,12 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout SCM') {
-            steps {
-                git 'https://github.com/AttharvBanage/DEVOPDSA.git'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t group-project-app .'
