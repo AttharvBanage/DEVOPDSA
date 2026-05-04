@@ -15,7 +15,6 @@ function updateCartCount() {
     elements.forEach(el => el.innerText = count);
 }
 
-// LOAD CART ITEMS (for cart page)
 function loadCart() {
     let cartDiv = document.getElementById("cart-items");
     let total = 0;
@@ -28,18 +27,17 @@ function loadCart() {
         total += item.price;
 
         cartDiv.innerHTML += `
-        <div class="cart-item">
-            <span>${item.name} - ₹${item.price}</span>
-            <div>
-                <button onclick="removeItem(${index})">❌</button>
-            </div>
+        <div class="cart-card">
+            <img src="${item.image}">
+            <h3>${item.name}</h3>
+            <p class="price">₹${item.price}</p>
+            <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
         </div>
         `;
     });
 
     document.getElementById("total").innerText = "Total: ₹" + total;
 }
-
 // REMOVE ITEM
 function removeItem(index) {
     cart.splice(index, 1);
